@@ -52,3 +52,22 @@ GuessNumber.at('0xbfB5cbB31Ae0dC543FE424c812f52CFcefBDCA21').play(7, accounts[3]
 GuessNumber.at('0xbfB5cbB31Ae0dC543FE424c812f52CFcefBDCA21').getBalance() # 20000000000000000000
 GuessNumber.at('0xbfB5cbB31Ae0dC543FE424c812f52CFcefBDCA21').play(9, accounts[3],{'from': accounts[3], 'value':'10 ether'}) # Played and won
 ```
+
+# https://www.youtube.com/watch?v=MFRane3tKEU&list=PLFPZ8ai7J-iRa9eb1qTuepB1qaMYfhcWn&index=9 & https://www.youtube.com/watch?v=ABDN-BrF89c&list=PLFPZ8ai7J-iRa9eb1qTuepB1qaMYfhcWn&index=10
+
+We create a test file.
+
+# https://www.youtube.com/watch?v=5jiqOUljfG8&list=PLFPZ8ai7J-iRa9eb1qTuepB1qaMYfhcWn&index=11
+We deploy on a testnet.
+Available testnets: https://docs.openzeppelin.com/learn/connecting-to-public-test-networks
+
+`brownie networks add Ethereum ropsten_alchemy host=https://eth-ropsten.alchemyapi.io/v2/Ffqum3o23jZyEHx84KXFGaW9y8GJIAr5  chainid=3 explorer='https://ropsten.etherscan.io/api' name='Ropstren Alchemy'`
+and then `brownie console --network=ropsten_alchemy`
+```
+>>> network.is_connected()
+True
+>>> web3.eth.blockNumber
+10935105
+```
+
+We can do the same thing wioth other providers (infura) and other testnets (Koval)
