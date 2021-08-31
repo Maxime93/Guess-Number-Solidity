@@ -9,22 +9,23 @@ contract GuessNumber {
     uint public balance;
 
     constructor (uint _secretNumber) payable {
-        require(msg.value == 10*10**18, 'contract needs to be funded with at least 10 eth');
+        require(msg.value == 10*10**18, 'Contract needs to be funded with exactly 10 eth');
         secretNumber = _secretNumber;
         currState = State.OPEN;
         balance = balance + msg.value;
     }
 
     function getBalance() public view returns (uint) {
-        return balance;
+        return address(this).balance;
     }
 
     function play(uint guessedNumber, address _player) external payable {
-        require(msg.value == 10*10**18, 'you must pay to play');
+        require(msg.value == 10*10**18, 'You must pay exactly 10 eth to play');
         require(currState == State.OPEN);
         player = payable(_player);
         balance = balance + msg.value;
         if (guessedNumber == secretNumber) {
+            // This is before the transfer because happening in the same block
             player.transfer(address(this).balance);
             currState = State.COMPLETE;
         }
